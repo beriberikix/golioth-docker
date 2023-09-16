@@ -6,10 +6,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
       packages: write
       id-token: write
+
+    strategy:
+      matrix:
+        ZEPHYR_VERSION: [0.16.1]
+        ZEPHYR_SDK_VERSION: [v3.4.0]
+        ZEPHYR_SDK_TOOLCHAIN: [
+          { NAME: "arm", TOOLCHAINS: "-t arm-zephyr-eabi"},
+          { NAME: "x86_64", TOOLCHAINS: "-t x86_64-zephyr-elf"},
+          { NAME: "espressif", TOOLCHAINS: "-t  xtensa-espressif_esp32s2_zephyr-elf -t xtensa-espressif_esp32s3_zephyr-elf -t xtensa-espressif_esp32_zephyr-elf"}
+        ]
 
     steps:
       - name: Checkout
@@ -30,8 +41,8 @@ jobs:
         with:
           file: Dockerfile.zephyr
           push: true
-          tags: ghcr.io/beriberikix/golioth-zephyr-arm:v3.2.0-0.16.1
+          tags: ghcr.io/beriberikix/golioth-zephyr-${{ matrix.ZEPHYR_SDK_TOOLCHAIN.NAME }}:${{ matrix.ZEPHYR_VERSION }}-${{ matrix.ZEPHYR_SDK_VERSION }}
           build-args: |
-            ZEPHYR_VERSION=v3.2.0
-          #   ZEPHYR_SDK_VERSION=0.16.1
-          #   ZEPHYR_SDK_TOOLCHAIN="-t x86_64-zephyr-elf"
+            ZEPHYR_VERSION=${{ matrix.ZEPHYR_VERSION }}
+            ZEPHYR_SDK_VERSION=${{ matrix.ZEPHYR_SDK_VERSION }}
+            ZEPHYR_SDK_TOOLCHAIN=${{ matrix.ZEPHYR_SDK_TOOLCHAIN.TOOLCHAINS }}
