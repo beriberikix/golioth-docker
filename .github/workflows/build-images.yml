@@ -30,7 +30,7 @@ jobs:
         with:
           file: Dockerfile.zephyr
           push: true
-          tags: golioth-zephyr-arm:v3.4.0-0.16.1
+          tags: ghcr.io/user/beriberikix/golioth-zephyr-arm:v3.4.0-0.16.1
           # build-args: |
           #   ZEPHYR_VERSION=v3.4.0
           #   ZEPHYR_SDK_VERSION=0.16.1
