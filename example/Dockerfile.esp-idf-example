@@ -1,0 +1,9 @@
+FROM golioth-espidf:latest
+
+RUN \
+  git clone --recursive https://github.com/golioth/golioth-firmware-sdk.git -b v0.7.0
+
+RUN \
+  cd golioth-firmware-sdk/examples/esp_idf/golioth_basics \
+  && idf.py set-target esp32 \
+  && idf.py build
