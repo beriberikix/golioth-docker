@@ -72,6 +72,6 @@ RUN \
   COPY west-ncs.yml zephyrproject/
 
   RUN \
-    mkdir zephyrproject && cd zephyrproject \
+    cd zephyrproject \
     && west init -l --mf west-zephyr.yml \
     && west update --narrow -o=--depth=1
