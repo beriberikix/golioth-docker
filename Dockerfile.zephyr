@@ -69,8 +69,10 @@ RUN \
 
   FROM python AS create_workspace
 
+  COPY west-ncs.yml zephyrproject/
+
   RUN \
     mkdir zephyrproject && cd zephyrproject \
-    && west init -m https://github.com/golioth/golioth-firmware-sdk.git --mf west-zephyr.yml \
+    && west -l --mf west-zephyr.yml \
     && west update --narrow -o=--depth=1 \
     && cd modules/lib/golioth-firmware-sdk && git submodule update --init --recursive
