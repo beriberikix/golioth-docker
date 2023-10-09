@@ -17,7 +17,7 @@ jobs:
         ZEPHYR_VERSION: [v3.4.0]
         ZEPHYR_SDK_VERSION: [0.16.3]
         ZEPHYR_SDK_TOOLCHAIN: [
-          { NAME: "base", TOOLCHAINS: "-t arm-zephyr-eabi -t x86_64-zephyr-elf-t xtensa-espressif_esp32s2_zephyr-elf -t xtensa-espressif_esp32s3_zephyr-elf -t xtensa-espressif_esp32_zephyr-elf"}
+          { NAME: "base", TOOLCHAINS: "-t arm-zephyr-eabi -t x86_64-zephyr-elf -t xtensa-espressif_esp32s2_zephyr-elf -t xtensa-espressif_esp32s3_zephyr-elf -t xtensa-espressif_esp32_zephyr-elf"}
           # { NAME: "arm", TOOLCHAINS: "-t arm-zephyr-eabi"},
           # { NAME: "x86_64", TOOLCHAINS: "-t x86_64-zephyr-elf"},
           # { NAME: "espressif", TOOLCHAINS: "-t xtensa-espressif_esp32s2_zephyr-elf -t xtensa-espressif_esp32s3_zephyr-elf -t xtensa-espressif_esp32_zephyr-elf"}
