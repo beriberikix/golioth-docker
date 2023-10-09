@@ -66,3 +66,11 @@ RUN \
   && apt-get remove -y --purge \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
+
+  FROM python AS create_workspace
+
+  RUN \
+    mkdir zephyrproject && cd zephyrproject \
+    && west init -m https://github.com/golioth/golioth-firmware-sdk.git --mf west-zephyr.yml \
+    && west update --narrow -o=--depth=1 \
+    && cd modules/lib/golioth-firmware-sdk && git submodule update --init --recursive
