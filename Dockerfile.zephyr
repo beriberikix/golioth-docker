@@ -73,6 +73,6 @@ RUN \
 
   RUN \
     mkdir zephyrproject && cd zephyrproject \
-    && west -l --mf west-zephyr.yml \
+    && west init -l --mf west-zephyr.yml \
     && west update --narrow -o=--depth=1 \
     && cd modules/lib/golioth-firmware-sdk && git submodule update --init --recursive
