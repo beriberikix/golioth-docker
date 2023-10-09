@@ -73,5 +73,5 @@ RUN \
 
   RUN \
     cd zephyrproject \
-    && west init -l --mf west-zephyr.yml \
+    && west init -l --mf west-ncs.yml \
     && west update --narrow -o=--depth=1
